@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- 16mm round socket for the insertion teleop demo (peg_insert), in black. -->
+<robot name="luxtac_round_hole_16mm">
+    <link name="luxtac_round_hole_16mm">
+        <visual>
+            <geometry>
+                <mesh filename="../../industreal/mesh/industreal_pegs/industreal_tray_insert_round_peg_16mm.obj"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.05 0.05 0.05 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../industreal/mesh/industreal_pegs/industreal_tray_insert_round_peg_16mm.obj"/>
+            </geometry>
+            <sdf resolution="256"/>
+        </collision>
+    </link>
+</robot>

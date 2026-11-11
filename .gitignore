@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+outputs/
+out/
+data/luxtac_live/
+*.log
+data/teleop/
+thirdparty/*
+!thirdparty/.gitkeep

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- Socket for a 5mm cylindrical peg: O6.0mm bore, 25mm deep, 28mm overall, on a
+     40x40x3mm plate. The second component of each alignment subassembly. -->
+<robot name="luxtac_round_hole_5mm">
+    <link name="luxtac_round_hole_5mm">
+        <visual>
+            <geometry>
+                <mesh filename="../mesh/luxtac_round_hole_5mm.obj"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.05 0.05 0.05 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../mesh/luxtac_round_hole_5mm.obj"/>
+            </geometry>
+            <sdf resolution="256"/>
+        </collision>
+    </link>
+</robot>

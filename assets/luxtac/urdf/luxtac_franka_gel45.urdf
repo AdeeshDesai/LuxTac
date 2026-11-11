@@ -1,0 +1,421 @@
+<?xml version="1.0" ?>
+<!-- Franka Panda with LuxTac adapter fingers and a 4.5 mm gel stack.
+
+     Fingers. ../mesh/luxtac_adapter_slot.obj, a rigid link with convex-hull
+     collision. The sensor slot in the contact face is 37.0 x 30.7 mm, centred
+     71.9 mm along the finger from the hand; the pad is centred there, 4 taxels
+     across and 8 along.
+
+     Gel. The adapter's contact face is at finger y = +0.0035 (left) / -0.0035
+     (right). The gel's outer surface stands 1 mm proud of the finger's y = 0 plane,
+     at y = -0.001 (left) / +0.001 (right), so
+
+         gap between the gel faces = 2 * DOF - 2.0 mm
+
+     The gel collision boxes are 8 mm thick and extend back into the adapter hull.
+     PhysX drops a contact once penetration passes the box midplane, and 8 mm puts
+     the midplane 4.0 mm behind the face, clear of the 1.9 mm working depth. The
+     tactile readout is an SDF query against the object, not the gel box.
+
+     Both fingers are identical. -->
+
+<robot name="panda" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="panda_link0">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link0.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link0.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="panda_link1">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link1.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link1.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint1" type="revolute">
+        <origin rpy="0 0 0" xyz="0 0 0.333"/>
+        <parent link="panda_link0"/>
+        <child link="panda_link1"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="10.0"/>
+        <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+    </joint>
+    <link name="panda_link2">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link2.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link2.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint2" type="revolute">
+        <origin rpy="-1.57079632679 0 0" xyz="0 0 0"/>
+        <parent link="panda_link1"/>
+        <child link="panda_link2"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="10.0"/>
+        <limit effort="87" lower="-1.7628" upper="1.7628" velocity="2.1750"/>
+    </joint>
+    <link name="panda_link3">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link3.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link3.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint3" type="revolute">
+        <origin rpy="1.57079632679 0 0" xyz="0 -0.316 0"/>
+        <parent link="panda_link2"/>
+        <child link="panda_link3"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="10.0"/>
+        <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+    </joint>
+    <link name="panda_link4">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link4.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link4.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint4" type="revolute">
+        <origin rpy="1.57079632679 0 0" xyz="0.0825 0 0"/>
+        <parent link="panda_link3"/>
+        <child link="panda_link4"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="10.0"/>
+        <limit effort="87" lower="-3.0718" upper="-0.0698" velocity="2.1750"/>
+    </joint>
+    <link name="panda_link5">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link5.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link5.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint5" type="revolute">
+        <origin rpy="-1.57079632679 0 0" xyz="-0.0825 0.384 0"/>
+        <parent link="panda_link4"/>
+        <child link="panda_link5"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="10.0"/>
+        <limit effort="12" lower="-2.8973" upper="2.8973" velocity="2.6100"/>
+    </joint>
+    <link name="panda_link6">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link6.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link6.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint6" type="revolute">
+        <origin rpy="1.57079632679 0 0" xyz="0 0 0"/>
+        <parent link="panda_link5"/>
+        <child link="panda_link6"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="10.0"/>
+        <limit effort="12" lower="-0.0175" upper="3.7525" velocity="2.6100"/>
+    </joint>
+    <link name="panda_link7">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/link7.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/link7.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_joint7" type="revolute">
+        <origin rpy="1.57079632679 0 0" xyz="0.088 0 0"/>
+        <parent link="panda_link6"/>
+        <child link="panda_link7"/>
+        <axis xyz="0 0 1"/>
+
+    </joint>
+
+    <joint name="panda_hand_joint" type="fixed">
+        <parent link="panda_link7"/>
+        <child link="panda_hand"/>
+        <origin rpy="0 0 -0.785398163397" xyz="0 0 0.107"/>
+    </joint>
+    <link name="panda_hand">
+        <visual>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/visual/hand.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="../../urdf/franka_description/meshes/collision/hand.obj"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="panda_finger_joint1" type="prismatic">
+        <parent link="panda_hand"/>
+        <child link="panda_leftfinger"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0584"/>
+        <axis xyz="0 1 0"/>
+        <!-- Joint friction, as in the TacSL GelSight gripper, resists the held object
+        prying the fingers open. -->
+        <dynamics damping="0.0" friction="5.0"/>
+        <limit effort="200" lower="0.0" upper="0.04" velocity="0.2"/>
+    </joint>
+    <joint name="panda_finger_joint2" type="prismatic">
+        <parent link="panda_hand"/>
+        <child link="panda_rightfinger"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0584"/>
+        <axis xyz="0 -1 0"/>
+        <dynamics damping="0.0" friction="5.0"/>
+        <limit effort="200" lower="0.0" upper="0.04" velocity="0.2"/>
+    </joint>
+    <link name="panda_leftfinger">
+        <visual>
+            <!-- rpy differs from the collision block below: IsaacGym applies
+            flip_visual_attachments=True to visual meshes only, and Rx(-90) here
+            cancels it. -->
+            <origin rpy="3.1415926536 0 1.5707963268" xyz="0.019598 0.0035 0.0919"/>
+            <geometry>
+                <mesh filename="../mesh/luxtac_adapter_slot.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="-1.5707963268 0 1.5707963268" xyz="0.019598 0.0035 0.0919"/>
+            <geometry>
+                <mesh filename="../mesh/luxtac_adapter_slot.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.0 0.015089 0.035462"/>
+            <mass value="0.042425"/>
+            <inertia ixx="2.770e-05" ixy="0" ixz="0" iyy="2.776e-05" iyz="4.189e-06" izz="8.037e-06"/>
+        </inertial>
+    </link>
+    <!-- Gel + acrylic. See the header. -->
+    <link name="luxtac_gel_left">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.00125 0.0719"/>
+            <geometry>
+                <box size="0.018 0.0045 0.036"/>
+            </geometry>
+            <material name="gel_grey">
+                <color rgba="0.55 0.55 0.55 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.003 0.0719"/>
+            <geometry>
+                <box size="0.018 0.008 0.036"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0.00125 0.0719"/>
+            <mass value="0.0025"/>
+            <inertia ixx="1.0e-07" ixy="0" ixz="0" iyy="1.0e-07" iyz="0" izz="1.0e-07"/>
+        </inertial>
+    </link>
+    <joint name="luxtac_gel_joint_left" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="panda_leftfinger"/>
+        <child link="luxtac_gel_left"/>
+    </joint>
+    <link name="panda_rightfinger">
+        <visual>
+            <origin rpy="3.1415926536 0 -1.5707963268" xyz="-0.019598 -0.0035 0.0919"/>
+            <geometry>
+                <mesh filename="../mesh/luxtac_adapter_slot.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="-1.5707963268 0 -1.5707963268" xyz="-0.019598 -0.0035 0.0919"/>
+            <geometry>
+                <mesh filename="../mesh/luxtac_adapter_slot.obj" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.0 -0.015089 0.035462"/>
+            <mass value="0.042425"/>
+            <inertia ixx="2.770e-05" ixy="0" ixz="0" iyy="2.776e-05" iyz="-4.189e-06" izz="8.037e-06"/>
+        </inertial>
+    </link>
+    <!-- Gel + acrylic. See the header. -->
+    <link name="luxtac_gel_right">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 -0.00125 0.0719"/>
+            <geometry>
+                <box size="0.018 0.0045 0.036"/>
+            </geometry>
+            <material name="gel_grey">
+                <color rgba="0.55 0.55 0.55 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 -0.003 0.0719"/>
+            <geometry>
+                <box size="0.018 0.008 0.036"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 -0.00125 0.0719"/>
+            <mass value="0.0025"/>
+            <inertia ixx="1.0e-07" ixy="0" ixz="0" iyy="1.0e-07" iyz="0" izz="1.0e-07"/>
+        </inertial>
+    </link>
+    <joint name="luxtac_gel_joint_right" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="panda_rightfinger"/>
+        <child link="luxtac_gel_right"/>
+    </joint>
+
+    <!-- =================== LuxTac pad frames ===================
+    Massless marker links where the taxel lattice attaches. No collision geometry:
+    contact is against the gel block.
+
+    Frame convention (matches LuxTacSensorCfg):
+      +y_pad points out of the finger toward the object, so a negative
+      normal_offset sinks the sensing plane into the finger.
+      In-plane: x_pad spans finger width (rows), z_pad runs along the finger (cols).
+
+    Placement: centred at z = 71.9 mm, the centre of the adapter's sensor slot. The
+    4 x 8 lattice at 4.5 mm pitch is 18 x 36 mm and covers 53.9 to 89.9 mm along the
+    finger. The TCP (panda_fingertip_centered) is at 73.9 mm.
+
+    Left finger body occupies y > 0, so out-of-finger is -y_finger: rotate pi about z.
+    Right finger geometry is already rotated pi about z in its link: identity.
+    Tip links mark a point 1 mm outside the pad face along +y_pad, as the TacSL
+    elastomer/elastomer_tip pattern expects. -->
+    <joint name="luxtac_pad_joint_left" type="fixed">
+        <origin rpy="0 0 3.14159265359" xyz="0.0 -0.001 0.0719"/>
+        <parent link="panda_leftfinger"/>
+        <child link="luxtac_pad_left"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="luxtac_pad_left">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="1.0e-6"/>
+            <inertia ixx="1.0e-09" ixy="0" ixz="0" iyy="1.0e-09" iyz="0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+    <joint name="luxtac_pad_tip_joint_left" type="fixed">
+        <origin rpy="0 0 3.14159265359" xyz="0.0 -0.002 0.0719"/>
+        <parent link="panda_leftfinger"/>
+        <child link="luxtac_pad_tip_left"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="luxtac_pad_tip_left">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="1.0e-6"/>
+            <inertia ixx="1.0e-09" ixy="0" ixz="0" iyy="1.0e-09" iyz="0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+    <joint name="luxtac_pad_joint_right" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0 0.001 0.0719"/>
+        <parent link="panda_rightfinger"/>
+        <child link="luxtac_pad_right"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="luxtac_pad_right">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="1.0e-6"/>
+            <inertia ixx="1.0e-09" ixy="0" ixz="0" iyy="1.0e-09" iyz="0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+    <joint name="luxtac_pad_tip_joint_right" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0 0.002 0.0719"/>
+        <parent link="panda_rightfinger"/>
+        <child link="luxtac_pad_tip_right"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="luxtac_pad_tip_right">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="1.0e-6"/>
+            <inertia ixx="1.0e-09" ixy="0" ixz="0" iyy="1.0e-09" iyz="0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+
+    <!-- Fingertip marker links. TacSL's env code resolves panda_leftfingertip and
+    panda_rightfingertip by name with no existence check, so they must exist.
+
+    They are at 0.0739, the TCP, not the pad centre (0.0719). They are the staging
+    and control reference; the pad links are the sensing reference. -->
+    <joint name="panda_fingertip_joint1" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0739"/>
+        <parent link="panda_leftfinger"/>
+        <child link="panda_leftfingertip"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="panda_leftfingertip">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="1.0e-6"/>
+            <inertia ixx="1.0e-09" ixy="0" ixz="0" iyy="1.0e-09" iyz="0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+    <joint name="panda_fingertip_joint2" type="fixed">
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0739"/>
+        <parent link="panda_rightfinger"/>
+        <child link="panda_rightfingertip"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="panda_rightfingertip">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="1.0e-6"/>
+            <inertia ixx="1.0e-09" ixy="0" ixz="0" iyy="1.0e-09" iyz="0" izz="1.0e-09"/>
+        </inertial>
+    </link>
+
+    <!-- Used for calculating pose and Jacobian: a dummy link at the midpoint between
+    the fingertips (when centered). -->
+    <joint name="panda_fingertip_centered_joint" type="fixed">
+        <parent link="panda_hand"/>
+        <child link="panda_fingertip_centered"/>
+        <!-- 0.0584 (franka_hand_length) + 0.0739 (the TCP along the finger) = 0.1323 -->
+        <origin rpy="0 0 0" xyz="0 0 0.1323"/>
+    </joint>
+    <link name="panda_fingertip_centered"/>
+
+</robot>

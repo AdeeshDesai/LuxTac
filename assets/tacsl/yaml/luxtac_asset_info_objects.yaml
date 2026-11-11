@@ -1,0 +1,371 @@
+# Object table for the LuxTac scripts, selected by env.asset_info_filename.
+#
+# lux_<shape>_<orientation>: the alignment objects (cuboid 20x20, cylinder D25, ellipse
+# 40x20, peg D15), meshes from scripts/make_luxtac_objs.py.
+# lux_peg_insert, lux_usb: the teleop insertion tasks.
+#
+# length is a staging parameter, not the object's size: it fixes where the plug origin
+# lands at reset. The alignment objects all declare 0.054, which puts the cross-section
+# centre on the pad centre. width/depth are the cross-section extents. density does not
+# set the mass: every LuxTac URDF carries an explicit <inertial>.
+
+lux_cuboid_vert:
+    luxtac_cuboid_vert:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cuboid_vert'
+        width: 0.02
+        depth: 0.02
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cuboid_horz:
+    luxtac_cuboid_horz:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cuboid_horz'
+        width: 0.02
+        depth: 0.02
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cuboid_deg45:
+    luxtac_cuboid_deg45:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cuboid_deg45'
+        width: 0.02
+        depth: 0.02
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cylinder_vert:
+    luxtac_cylinder_vert:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cylinder_vert'
+        width: 0.025
+        depth: 0.025
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.025
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cylinder_horz:
+    luxtac_cylinder_horz:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cylinder_horz'
+        width: 0.025
+        depth: 0.025
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.025
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cylinder_deg45:
+    luxtac_cylinder_deg45:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cylinder_deg45'
+        width: 0.025
+        depth: 0.025
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.025
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_ellipse_vert:
+    luxtac_ellipse_vert:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_ellipse_vert'
+        width: 0.02
+        depth: 0.04
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_ellipse_horz:
+    luxtac_ellipse_horz:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_ellipse_horz'
+        width: 0.02
+        depth: 0.04
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_ellipse_deg45:
+    luxtac_ellipse_deg45:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_ellipse_deg45'
+        width: 0.02
+        depth: 0.04
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_peg_vert:
+    luxtac_peg_vert:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_peg_vert'
+        width: 0.015
+        depth: 0.015
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.015
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_peg_horz:
+    luxtac_peg_horz:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_peg_horz'
+        width: 0.015
+        depth: 0.015
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.015
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_peg_deg45:
+    luxtac_peg_deg45:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_peg_deg45'
+        width: 0.015
+        depth: 0.015
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.015
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cuboid_deg135:
+    luxtac_cuboid_deg135:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cuboid_deg135'
+        width: 0.02
+        depth: 0.02
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_cylinder_deg135:
+    luxtac_cylinder_deg135:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_cylinder_deg135'
+        width: 0.025
+        depth: 0.025
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.025
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_ellipse_deg135:
+    luxtac_ellipse_deg135:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_ellipse_deg135'
+        width: 0.02
+        depth: 0.04
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.02
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+lux_peg_deg135:
+    luxtac_peg_deg135:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_peg_deg135'
+        width: 0.015
+        depth: 0.015
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.015
+    round_hole_5mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_5mm'
+        width: 0.006
+        depth: 0.025
+        height: 0.028
+        density: 8000.0
+        friction: 1.0
+
+# Peg-in-hole: the 90mm peg with a 16mm round socket.
+lux_peg_insert:
+    luxtac_peg_insert:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_peg_insert'
+        width: 0.015
+        depth: 0.015
+        length: 0.054
+        density: 1240.0
+        friction: 1.0
+        grasp_offset: 0.02
+        plug_width: 0.015
+    round_hole_16mm:
+        urdf_par_dir: 'luxtac'
+        urdf_path: 'luxtac_round_hole_16mm'
+        diameter: 0.0165
+        height: 0.028
+        depth: 0.023
+        density: 8000.0
+        friction: 0.5
+
+# USB insertion, on the TacSL USB plug and socket.
+lux_usb:
+    usb_plug:
+        urdf_par_dir: 'industreal'
+        urdf_path: 'USB_plug'
+        diameter: 0.007986
+        length: 0.05
+        density: 80000.0
+        friction: 1.0
+        grasp_offset: 0.04
+        plug_width: 0.008
+    usb_socket:
+        urdf_par_dir: 'industreal'
+        urdf_path: 'USB_socket'
+        diameter: 0.0081
+        height: 0.028
+        depth: 0.023
+        density: 8000.0
+        friction: 0.5
